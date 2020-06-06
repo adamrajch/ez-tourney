@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Card from "./ChoiceCard";
+import { loadGetInitialProps } from "next/dist/next-server/lib/utils";
 
-const CardContainer = () => {
+const CardContainer = (props) => {
   const tournaments = ["Team", "Solo"];
   const [color, setColor] = useState("");
   const types = ["Single Elimination", "Double Elimination"];
@@ -45,6 +46,8 @@ const CardContainer = () => {
           </button>
         );
       })}
+      <button onClick={props.prevStep}>Previous</button>
+      <button onClick={props.nextStep}>Next</button>
       <style jsx>{`
         .create-wrap {
           width: 100%;
