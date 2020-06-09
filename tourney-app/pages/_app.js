@@ -1,7 +1,15 @@
 import Nav from "../components/Nav";
+import Head from "next/head";
 function MyApp({ Component, pageProps }) {
   return (
     <div className="wrap">
+      <Head>
+        <title>Tournament McGee</title>
+        <link
+          href="https://css.gg/css?=|add|arrow-down|arrow-left-o|arrow-long-left|arrow-long-right|arrow-right-o|trash"
+          rel="stylesheet"
+        ></link>
+      </Head>
       <div className="container">
         <Nav />
         <Component {...pageProps} />
@@ -11,7 +19,7 @@ function MyApp({ Component, pageProps }) {
         .wrap {
           height: 100%;
           min-height: 100vh;
-          background-color: pink;
+          background-color: black;
           color: white;
         }
         .container {

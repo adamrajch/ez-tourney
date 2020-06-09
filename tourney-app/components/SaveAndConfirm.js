@@ -2,8 +2,7 @@ const SaC = (props) => {
   return (
     <>
       <div>hello save here</div>
-      <button onClick={props.prevStep}>Previous</button>
-      <button onClick={props.nextStep}>Next</button>
+      <i className="gg-arrow-long-left" onClick={props.prevStep} />
     </>
   );
 };
