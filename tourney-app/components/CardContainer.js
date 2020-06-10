@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Card from "./ChoiceCard";
-// import { loadGetInitialProps } from "next/dist/next-server/lib/utils"
+
 import ArrowDiv from "./ArrowDiv";
 
 const CardContainer = (props) => {
   const tournaments = ["Team", "Solo"];
   const [color, setColor] = useState("");
-  const types = ["Single Elimination", "Double Elimination"];
 
   useEffect(() => {
     console.log(color);
@@ -32,6 +31,7 @@ const CardContainer = (props) => {
           </button>
         );
       })}
+
       {/* <button onClick={props.prevStep}>Previous</button>
       <button onClick={props.nextStep}>Next</button> */}
       <ArrowDiv nextStep={props.nextStep} prevStep={props.prevStep} />
@@ -44,18 +44,17 @@ const CardContainer = (props) => {
           align-items: center;
         }
         .base {
-          height: 35vh;
-          border: 4px solid white;
           display: flex;
           justify-content: center;
           align-items: center;
-          width: 100%;
-          margin: 0 2em 0 2em;
+          width: 274px;
+          height: 274px;
           background-color: transparent;
           color: white;
           cursor: pointer;
           outline: none;
           margin-top: 2em;
+          border: 2px solid white;
         }
         .highlight {
           border: 4px solid #32e0c4;
