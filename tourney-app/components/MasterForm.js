@@ -13,14 +13,17 @@ const MasterForm = (props) => {
     admin: "",
     event: "",
     type: null,
-    roster: [],
   });
+  const [players, setPlayers] = useState([]);
 
   const updateField = (e) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
+  };
+  const addPlayer = (player) => {
+    setPlayers(...players, player);
   };
   // useEffect(() => {
   //   console.log(form);
@@ -64,6 +67,8 @@ const MasterForm = (props) => {
         prevStep={prevStep}
         updateField={updateField}
         state={form}
+        players={players}
+        addPlayer={addPlayer}
       />
     );
   }

@@ -3,10 +3,6 @@ import { useState } from "react";
 import CardContainer from "../components/CardContainer";
 import MasterForm from "../components/MasterForm";
 const Create = () => {
-  return (
-    <div>
-      <MasterForm />
-    </div>
-  );
+  return <MasterForm />;
 };
 export default Create;
