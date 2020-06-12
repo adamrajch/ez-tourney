@@ -5,10 +5,11 @@ function MyApp({ Component, pageProps }) {
     <div className="wrap">
       <Head>
         <title>Tournament McGee</title>
+
         <link
-          href="https://css.gg/css?=|add|arrow-down|arrow-left-o|arrow-long-left|arrow-long-right|arrow-right-o|trash"
+          href="https://css.gg/css?=|add|arrow-down|arrow-left-o|arrow-long-left|arrow-long-right|arrow-right-o|check-o|trash"
           rel="stylesheet"
-        ></link>
+        />
       </Head>
       <div className="container">
         <Nav />

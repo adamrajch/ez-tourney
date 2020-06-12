@@ -4,15 +4,16 @@ import ChoiceCard from "./ChoiceCard";
 import CardContainer from "./CardContainer";
 import AddRoster from "./AddRoster";
 import { useState, useEffect } from "react";
-
+import FormHeader from "./FormHeader";
 const MasterForm = (props) => {
   const [step, setStep] = useState(1);
   //eventual admin will be a registered user
   const [form, setForm] = useState({
-    name: "",
-    admin: "",
-    event: "",
+    name: null,
+    admin: null,
+    event: null,
     type: null,
+    pages: ["Basic Info", "Specifications", "Add Partcipipants", "Finalize"],
   });
   const [players, setPlayers] = useState([]);
 
@@ -45,41 +46,57 @@ const MasterForm = (props) => {
 
   if (step === 1) {
     return (
-      <UserDetails nextStep={nextStep} updateField={updateField} state={form} />
+      <>
+        <FormHeader steps={step} form={form} />
+        <UserDetails
+          nextStep={nextStep}
+          updateField={updateField}
+          state={form}
+        />
+      </>
     );
   }
 
   if (step === 2) {
     return (
-      <CardContainer
-        nextStep={nextStep}
-        prevStep={prevStep}
-        updateField={updateField}
-        updateSpecific={updateSpecific}
-        state={form}
-      />
+      <>
+        <FormHeader steps={step} form={form} />
+        <CardContainer
+          nextStep={nextStep}
+          prevStep={prevStep}
+          updateField={updateField}
+          updateSpecific={updateSpecific}
+          state={form}
+        />
+      </>
     );
   }
   if (step === 3) {
     return (
-      <AddRoster
-        nextStep={nextStep}
-        prevStep={prevStep}
-        updateField={updateField}
-        state={form}
-        players={players}
-        addPlayer={addPlayer}
-      />
+      <>
+        <FormHeader steps={step} form={form} />
+        <AddRoster
+          nextStep={nextStep}
+          prevStep={prevStep}
+          updateField={updateField}
+          state={form}
+          players={players}
+          addPlayer={addPlayer}
+        />
+      </>
     );
   }
 
   if (step === 4) {
     return (
-      <SaveAndConfirm
-        nextStep={nextStep}
-        prevStep={prevStep}
-        // saveForm={saveForm}
-      />
+      <>
+        <FormHeader steps={step} form={form} />
+        <SaveAndConfirm
+          nextStep={nextStep}
+          prevStep={prevStep}
+          // saveForm={saveForm}
+        />
+      </>
     );
   }
 
