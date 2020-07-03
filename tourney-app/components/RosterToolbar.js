@@ -1,10 +1,11 @@
+import AddDialog from "./AddDialog";
 const Toolbar = (props) => {
   return (
     <div className="toolbar">
       <span>Tournament Roster</span>
-      <button className="btn" onClick={() => console.log("hi")}>
-        <i className="gg-add" />
-      </button>
+
+      <AddDialog addPlayer={props.addPlayer} />
+
       <style jsx>{`
         .toolbar {
           display: flex;

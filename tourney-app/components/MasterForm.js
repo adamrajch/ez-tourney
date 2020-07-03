@@ -16,7 +16,11 @@ const MasterForm = (props) => {
     pages: ["Basic Info", "Specifications", "Add Partcipipants", "Finalize"],
   });
   const [players, setPlayers] = useState([]);
+  const [numPlayer, setNum] = useState(1);
 
+  const nextPlayer = () => {
+    setNum((numPlayer) => numPlayer + 1);
+  };
   const updateField = (e) => {
     setForm({
       ...form,
@@ -24,12 +28,17 @@ const MasterForm = (props) => {
     });
   };
   const addPlayer = (player) => {
-    setPlayers(...players, player);
+    player.id = numPlayer;
+    setPlayers((players) => [...players, player]);
+    nextPlayer();
+    console.log(players, player);
   };
   // useEffect(() => {
   //   console.log(form);
   // }, [form]);
-
+  useEffect(() => {
+    console.log(players);
+  }, [players]);
   const updateSpecific = (value) => {
     setForm({
       ...form,

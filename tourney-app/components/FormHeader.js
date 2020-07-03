@@ -6,7 +6,7 @@ const FormHeader = (props) => {
     <div className="header">
       {props.form.pages.map((page, i) => {
         return (
-          <div className="step">
+          <div className="step" key={i}>
             <span className={props.steps == i + 1 ? "icon highlight" : "icon"}>
               {i + 1}
             </span>
