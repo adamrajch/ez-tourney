@@ -29,10 +29,16 @@ const MasterForm = (props) => {
   };
   const addPlayer = (player) => {
     player.id = numPlayer;
+    player.name = player.name
+      .toLowerCase()
+      .split(" ")
+      .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+      .join(" ");
+
     setPlayers((players) => [...players, player]);
     nextPlayer();
-    console.log(players, player);
   };
+
   // useEffect(() => {
   //   console.log(form);
   // }, [form]);

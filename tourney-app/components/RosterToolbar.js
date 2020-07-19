@@ -10,8 +10,9 @@ const Toolbar = (props) => {
         .toolbar {
           display: flex;
           justify-content: space-between;
-          border: 1px solid white;
+          // border: 1px solid white;
           padding: 1em;
+          margin-top: 2em;
         }
         .btn {
           outline: none;

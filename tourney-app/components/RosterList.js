@@ -1,4 +1,5 @@
 import Toolbar from "./RosterToolbar";
+import List from "./RosterTable";
 const RosterList = (props) => {
   let players = props.players;
   // const playerList = props.players.map((player, i) => {
@@ -12,18 +13,7 @@ const RosterList = (props) => {
     <div className="cont">
       <Toolbar addPlayer={props.addPlayer} />
       <div className="wrap">
-        {props.typeOfTourney == "Solo" ? <div>hi</div> : <div>yo</div>}
-        {players.length > 0 ? (
-          players.map((player, i) => {
-            return (
-              <div key={i}>
-                {player.id} {player.name}
-              </div>
-            );
-          })
-        ) : (
-          <div>Add participants</div>
-        )}
+        <List players={props.players} />
       </div>
       <style jsx>{`
         .cont {
@@ -32,7 +22,7 @@ const RosterList = (props) => {
         .wrap {
           display: flex;
           direction: column;
-          border: 1px solid white;
+          // border: 1px solid white;
           height: 80%;
         }
       `}</style>

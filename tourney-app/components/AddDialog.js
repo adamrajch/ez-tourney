@@ -17,6 +17,7 @@ export default function AlertDialogSlide(props) {
     name: "",
     email: "",
     dob: null,
+    country: "",
     org: "",
   });
   const updateField = (e) => {
@@ -31,14 +32,49 @@ export default function AlertDialogSlide(props) {
 
   const handleClose = () => {
     setOpen(false);
+    setPlayerForm({
+      name: "",
+      email: "",
+      dob: "",
+      country: "",
+    });
   };
   const handleAdd = () => {
-    handleClose();
-    props.addPlayer(playerForm);
+    // handleClose();
+    if (validate == true) {
+      console.log(validate);
+      props.addPlayer(playerForm);
+      setPlayerForm({
+        name: "",
+        email: "",
+        dob: "",
+        country: "",
+      });
+    }
+  };
+  const validate = () => {
+    if (
+      playerForm.name.length == 0 ||
+      playerForm.email.length == 0 ||
+      playerForm.country.length == 0 ||
+      playerForm.dob.length == 0
+    ) {
+      alert("please fill out required fields");
+      // return false;
+    } else {
+      props.addPlayer(playerForm);
+      setPlayerForm({
+        name: "",
+        email: "",
+        dob: "",
+        country: "",
+      });
+      handleClose();
+    }
   };
   return (
     <div>
-      <button className="btn" onClick={() => console.log("hi")}>
+      <button className="btn">
         <i className="gg-add" onClick={handleClickOpen} />
       </button>
       <Dialog
@@ -53,26 +89,36 @@ export default function AlertDialogSlide(props) {
           {"Add Participant"}
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
+          {/* <DialogContentText id="alert-dialog-slide-description">
             Your tournament roster
-          </DialogContentText>
+          </DialogContentText> */}
           <TextField
             autoFocus
             margin="dense"
             id="name"
-            label="Name"
+            label="Name*"
             type="name"
             name="name"
             value={playerForm.name}
             onChange={updateField}
             fullWidth
           />
-
+          <TextField
+            autoFocus
+            margin="dense"
+            id="country"
+            label="Country*"
+            type="country"
+            name="country"
+            value={playerForm.country}
+            onChange={updateField}
+            fullWidth
+          />
           <TextField
             autoFocus
             margin="dense"
             id="name"
-            label="Email Address"
+            label="Email Address*"
             type="email"
             fullWidth
             name="email"
@@ -83,7 +129,7 @@ export default function AlertDialogSlide(props) {
             autoFocus
             margin="dense"
             id="dob"
-            label="Date of Birth"
+            label="Date of Birth*"
             type="dob"
             fullWidth
             name="dob"
@@ -103,7 +149,7 @@ export default function AlertDialogSlide(props) {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleAdd} color="primary">
+          <Button onClick={validate} color="primary">
             Add
           </Button>
         </DialogActions>
