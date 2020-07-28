@@ -1,56 +1,68 @@
 import Nav from "../components/Nav";
 import Head from "next/head";
-function MyApp({ Component, pageProps }) {
-  return (
-    <div className="wrap">
-      <Head>
-        <title>Tournament McGee</title>
+import App from "next/app";
+class MyApp extends App {
+  static async getInitialProps({ Component, ctx }) {
+    let pageProps = {};
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
+    }
+    return { pageProps };
+  }
 
-        <link
-          href="https://css.gg/css?=|add|arrow-down|arrow-left-o|arrow-long-left|arrow-long-right|arrow-right-o|check-o|trash"
-          rel="stylesheet"
-        />
-      </Head>
-      <div className="container">
-        <Nav />
-        <Component {...pageProps} />
-      </div>
+  render() {
+    const { Component, pageProps } = this.props;
+    return (
+      <div className="wrap">
+        <Head>
+          <title>Tournament McGee</title>
 
-      <style jsx>{`
-        .wrap {
-          height: 100%;
-          min-height: 100vh;
-          background-color: black;
-          color: white;
-        }
-        .container {
-          display: block;
-          width: 66%;
-          margin: auto;
-        }
-      `}</style>
-      <style jsx global>
-        {`
-          * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-              Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-              sans-serif;
-            // color: #bbe1fa;
-          }
-          html,
-          body {
-            width: 100%;
+          <link
+            href="https://css.gg/css?=|add|arrow-down|arrow-left-o|arrow-long-left|arrow-long-right|arrow-right-o|check-o|trash"
+            rel="stylesheet"
+          />
+          <link rel="stylesheet" type="text/css" href="/nprogress.css" />
+        </Head>
+        <div className="container">
+          <Nav />
+          <Component {...pageProps} />
+        </div>
+
+        <style jsx>{`
+          .wrap {
             height: 100%;
+            min-height: 100vh;
+            background-color: black;
+            color: white;
           }
-        `}
-      </style>
-    </div>
-  );
+          .container {
+            display: block;
+            width: 66%;
+            margin: auto;
+          }
+        `}</style>
+        <style jsx global>
+          {`
+            * {
+              padding: 0;
+              margin: 0;
+              box-sizing: border-box;
+              font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+                Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+                sans-serif;
+              // color: #bbe1fa;
+            }
+            html,
+            body {
+              width: 100%;
+              height: 100%;
+            }
+          `}
+        </style>
+      </div>
+    );
+  }
 }
-
 // Only uncomment this method if you have blocking data requirements for
 // every single page in your application. This disables the ability to
 // perform automatic static optimization, causing every page in your app to

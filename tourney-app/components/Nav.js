@@ -1,23 +1,67 @@
 import Link from "next/link";
+import Router, { useRouter } from "next/router";
+import NProgress from "nprogress";
+Router.onRouteChangeStart = () => NProgress.start();
+Router.onRouteChangeComplete = () => NProgress.done();
+Router.onRouteChangeError = () => NProgress.done();
+
 const Nav = () => {
+  const user = true;
+  const router = useRouter();
+  function isActive(route) {
+    if (route === router.pathname) {
+      return "active";
+    }
+    return "inactive";
+  }
+
   return (
     <nav className="nav">
       <span className="logo">
         <Link href="/">
-          <a>Ez Tourney</a>
+          <a className={isActive("/")}>Ez Tourney</a>
         </Link>
       </span>
       <ul className="navlinks">
-        <li>
-          <Link href="/create">
-            <a>Create</a>
-          </Link>
-        </li>
+        {user && (
+          <li>
+            <Link href="/create">
+              <a className={isActive("/create")}>Create</a>
+            </Link>
+          </li>
+        )}
         <li>
           <Link href="/about">
-            <a>About</a>
+            <a className={isActive("/about")}>About</a>
           </Link>
         </li>
+        {user ? (
+          <>
+            <li>
+              <Link href="/account">
+                <a className={isActive("/account")}>Account</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/logout">
+                <a className={isActive("/logout")}>Logout</a>
+              </Link>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <Link href="/login">
+                <a className={isActive("/login")}>Login</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/Sing Up">
+                <a className={isActive("/signup")}>Sign Up</a>
+              </Link>
+            </li>
+          </>
+        )}
       </ul>
       <style jsx>{`
         .nav {
@@ -38,11 +82,13 @@ const Nav = () => {
           text-decoration: none;
           color: white;
           padding: 0.5em;
-          border-radius: 4em;
         }
         li:hover a:hover {
           color: red;
           background-color: white;
+        }
+        .active {
+          background: grey;
         }
       `}</style>
     </nav>
