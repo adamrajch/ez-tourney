@@ -1,0 +1,29 @@
+[
+  {
+    "name": "tendon 2020",
+    "description": "vendetta allstars qualifier",
+    "poolNum": 8,
+    "participants": [
+      "jeff",
+      "arnorld",
+      "serge",
+      "oleg",
+      "mcgee",
+      "doc",
+      "holliday",
+      "andreea"
+    ],
+    "bracket": "single",
+    "team": false,
+    "private": false
+  },
+  {
+    "name": "olympics 2000",
+    "description": "olympic games of athens. yah yeet",
+    "poolNum": 4,
+    "participants": ["brook", "clay", "wiggins", "dan"],
+    "type": "double",
+    "team": false,
+    "private": false
+  }
+]
